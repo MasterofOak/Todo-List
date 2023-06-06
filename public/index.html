@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
+        />
+        <link rel="stylesheet" href="../src/style.css" />
+        <title>To Do List</title>
+    </head>
+    <body>
+        <div class="todo-create-form">
+            <form action="">
+                <div class="input-field">
+                    <label for="todo-title">Title</label
+                    ><input type="text" id="todo-title" /><br />
+                </div>
+                <div class="input-field">
+                    <label for="todo-date">Due Date</label
+                    ><input type="date" name="" id="todo-date" /><br />
+                </div>
+                <div class="input-field">
+                    <label for="todo-type">ToDo Type</label
+                    ><select name="" id="todo-type">
+                        <option value="Today"></option>
+                        <option value="Repetetive"></option>
+                        <option value="Favorites"></option>
+                    </select>
+                </div>
+                <input type="submit" value="Create" />
+            </form>
+        </div>
+        <nav>
+            <div class="nav-flex-item">
+                <span class="material-symbols-rounded icons-nav">menu</span>
+                <a href="">Random ToDo of the day</a>
+            </div>
+            <div class="nav-flex-item"><h2>Listy</h2></div>
+            <div class="nav-flex-item">
+                <span class="material-symbols-rounded icons-nav"
+                    >notifications</span
+                >
+                <button id="todo-add">Add Task</button>
+            </div>
+        </nav>
+        <div class="wrapper">
+            <aside>
+                <div class="aside-flex-item">
+                    <span class="material-symbols-rounded icons-sidebar"
+                        >inbox</span
+                    >Inbox
+                </div>
+                <div class="aside-flex-item">
+                    <span class="material-symbols-rounded icons-sidebar"
+                        >today</span
+                    >Today
+                </div>
+                <div class="aside-flex-item">
+                    <span class="material-symbols-rounded icons-sidebar"
+                        >recycling</span
+                    >Repetitive
+                </div>
+                <div class="aside-flex-item">
+                    <span class="material-symbols-rounded icons-sidebar"
+                        >bookmark_manager</span
+                    >Projects
+                </div>
+            </aside>
+            <main>
+                <h1>Today</h1>
+                <div id="search-container">
+                    <form>
+                        <input
+                            type="text"
+                            placeholder="Search.."
+                            name="search"
+                        />
+                        <span class="material-symbols-rounded"> search </span>
+                    </form>
+                </div>
+                <div class="todo-grid-container">
+                    <div class="todo-grid-item">
+                        <div class="checkbox-container">
+                            <input type="checkbox" name="" id="checkbox" />
+                            <label for="checkbox"></label>
+                        </div>
+                        <p>Take out a trash</p>
+                        <p>Due to Date:</p>
+                        <span class="material-symbols-rounded icons-todo"
+                            >recycling</span
+                        >
+                    </div>
+                    <div class="todo-grid-item">
+                        <div class="checkbox-container">
+                            <input type="checkbox" name="" id="checkbox" />
+                            <label for="checkbox"></label>
+                        </div>
+                        <p>Take out a trash</p>
+                        <p>Due to Date:</p>
+                        <span class="material-symbols-rounded icons-todo"
+                            >recycling</span
+                        >
+                    </div>
+                    <div class="todo-grid-item">
+                        <div class="checkbox-container">
+                            <input type="checkbox" name="" id="checkbox" />
+                            <label for="checkbox"></label>
+                        </div>
+                        <p>Take out a trash</p>
+                        <p>Due to Date:</p>
+                        <span class="material-symbols-rounded icons-todo"
+                            >recycling</span
+                        >
+                    </div>
+                    <div class="todo-grid-item">
+                        <div class="checkbox-container">
+                            <input type="checkbox" name="" id="checkbox" />
+                            <label for="checkbox"></label>
+                        </div>
+                        <p>Take out a trash</p>
+                        <p>Due to Date:</p>
+                        <span class="material-symbols-rounded icons-todo"
+                            >recycling</span
+                        >
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="../src/index.js"></script>
+    </body>
+</html>
