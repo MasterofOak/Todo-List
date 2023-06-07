@@ -42,7 +42,7 @@ nav {
 }
 .wrapper {
     display: grid;
-    padding: 3.2rem 0px 0px 0px;
+    padding: 3.5rem 0px 0px 0px;
     grid-template-columns: 1fr 5fr;
     height: 100%;
 }
@@ -156,31 +156,44 @@ input[type="checkbox"] {
     top: 0rem;
     left: 0rem;
 }
-.todo-create-form {
+.create-todo-container {
+    display: none;
     position: absolute;
+    z-index: 1;
     top: 25%;
     left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    width: 500px;
-    height: 400px;
-    border-radius: 1rem;
+    width: 400px;
+    height: 300px;
+    border-radius: 0.5rem;
     padding: 4rem 2rem;
     background-color: #3b28cc;
 }
-.todo-create-form form {
+.create-todo-container form {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    height: 100%;
 }
 .input-field {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
     margin: 1rem 0rem;
 }
-.input-field label {
-    margin-right: 1rem;
-}
 .input-field input {
+    padding: 5px;
+    color: #28231d;
+    flex: 1 auto;
+    height: 1.5rem;
+}
+.input-field input[type="submit"] {
+    padding: 5px;
     height: 2rem;
-    width: 100%;
+    cursor: pointer;
+}
+select {
+    color: #28231d;
 }
