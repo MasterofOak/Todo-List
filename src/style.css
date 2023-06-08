@@ -176,6 +176,12 @@ input[type="checkbox"] {
     flex-direction: column;
     height: 100%;
 }
+form button{
+    float: left;
+    width: 3rem;
+    cursor: pointer;
+    background-color: #28231d;
+}
 .input-field {
     display: flex;
     justify-content: flex-start;
