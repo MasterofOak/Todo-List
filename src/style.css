@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&display=swap");
+
 *,
 *:before,
 *:after {
@@ -9,19 +11,90 @@
     padding: 0;
     border: 0;
     font-family: "Raleway", sans-serif;
+    font-family: "Heebo", sans-serif;
     color: whitesmoke;
 }
 :root {
     font-size: 14px;
+}
+b,
+em {
+    color: inherit;
 }
 html,
 body {
     position: relative;
     height: 100%;
 }
+.hidden {
+    display: none !important;
+}
+/*       FORM       */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(0.5em);
+}
+#create-todo-form {
+    position: relative;
+    width: 33%;
+    border-radius: 0.5rem;
+    padding: 4em 2em;
+    display: grid;
+    grid-gap: 1rem;
+    grid-auto-columns: 1fr;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    font-weight: bold;
+    background-color: #3b28cc;
+}
+#todo-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 2rem;
+    cursor: pointer;
+}
+#submit-btn {
+    font-weight: bold;
+}
+.input-field {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+}
+.input-field input {
+    border-radius: 0.8rem;
+    padding: 10px;
+    color: #28231d;
+    flex: 1 auto;
+    height: 1.6rem;
+}
+.input-field input[type="submit"] {
+    padding: 5px;
+    height: 3rem;
+    cursor: pointer;
+}
+select {
+    padding: 0.125em;
+    color: #28231d;
+    border-radius: 0.5em;
+}
+
+option {
+    color: #28231d;
+}
+/*       NAV SECTION       */
 nav {
     display: flex;
     position: fixed;
+    z-index: 1;
     top: 0px;
     width: 100%;
     justify-content: space-between;
@@ -35,23 +108,74 @@ nav {
     align-items: center;
 }
 .nav-flex-item > * {
-    margin: 0px 1rem;
+    margin: 0px 1em;
 }
-#search-container {
-    display: inline-block;
+.icons-nav {
+    font-size: 1.8rem;
+    cursor: pointer;
+    position: relative;
+    top: 5px;
+    color: whitesmoke;
 }
-.wrapper {
-    display: grid;
-    padding: 3.5rem 0px 0px 0px;
-    grid-template-columns: 1fr 5fr;
-    height: 100%;
+#todo-add {
+    text-align: center;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    color: #d00000;
+    padding: 0.5rem;
+    width: 8rem;
 }
+#notification-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    position: absolute;
+    border-radius: 0.5rem;
+    top: 1em;
+    right: -5em;
+    background-color: #0ad767;
+    width: 400px;
+    height: 400px;
+    font-size: 1.25rem;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    box-shadow: 0rem 0rem 5px 2px #0bc860;
+}
+#notification-container > p {
+    line-height: 2rem;
+    padding-left: 1em;
+    padding-right: 1em;
+    color: #28231d;
+    letter-spacing: 0.25px;
+    border-top: 4px solid;
+    border-bottom: 4px solid;
+    border-color: #09f975;
+}
+#counter {
+    position: absolute;
+    text-align: center;
+    font-size: 12px;
+    top: -3rem;
+    right: -2.5rem;
+    width: 15px;
+    height: 15px;
+    background-color: #d00000;
+    border-radius: 50%;
+}
+#notification-bar {
+    position: absolute;
+}
+#random {
+    cursor: pointer;
+}
+/*       ASIDE SECTION       */
 aside {
     display: flex;
     flex-direction: column;
     background-color: #87bfff;
     padding: 10px 20px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 aside > div {
     margin-bottom: 1rem;
@@ -62,14 +186,27 @@ aside > div span {
     margin-right: 5px;
     top: 5px;
 }
-main {
-    padding: 20px;
-    background-color: #add7f6;
+.icons-sidebar {
+    color: #d00000;
+    font-size: 1.8rem;
 }
-main h1 {
-    color: #28231d;
+.drop-down-active {
+    transform: rotate(180deg);
 }
+#projects-list {
+    font-weight: bold;
+    padding: 1em 1em 1em 3em;
+    list-style-type: square;
+}
+.delete-project {
+    font-size: 1.25rem;
+    position: relative;
+    top: 0.15em;
+    margin-left: 1em;
+}
+/*       SEARCH CONTAINER       */
 #search-container {
+    display: inline-block;
     margin: 2rem 0rem;
 }
 #search-container input {
@@ -90,6 +227,20 @@ main h1 {
 input[type="text"]:focus {
     color: #28231d;
 }
+/*       MAIN SECTION       */
+#wrapper {
+    display: grid;
+    padding: 3.5em 0px 0px 0px;
+    grid-template-columns: 1fr 5fr;
+    height: 100%;
+}
+main {
+    padding: 20px;
+    background-color: #add7f6;
+}
+main h1 {
+    color: #28231d;
+}
 .todo-grid-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -97,109 +248,154 @@ input[type="text"]:focus {
 }
 .todo-grid-item {
     display: grid;
-    padding: 10px 20px;
-    border-top: 2px solid;
-    border-bottom: 2px solid;
+    position: relative;
+    text-transform: capitalize;
+    font-size: 1.125rem;
+    grid-gap: 1rem;
+    grid-template-columns: auto 2fr auto;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "checkbox title priority"
+        "description description date";
+    padding: 0.8em 1.5em;
+    border-top: 3px solid;
+    border-bottom: 3px solid;
     background-color: #68a7ff;
-    border-color: #d00000;
+    border-color: #0d95e4;
     align-items: center;
     text-align: left;
-    grid-template-columns: auto 2fr 1fr auto;
+    transition: padding 0.25s ease 50ms;
+    animation: scaleTodo 0.75s ease-out;
 }
-.icons-nav {
-    font-size: 1.8rem;
-    cursor: pointer;
-    position: relative;
-    top: 5px;
-    color: whitesmoke;
+@keyframes scaleTodo {
+    0% {
+        transform: scale(0.1,1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
-.icons-sidebar {
-    color: #d00000;
-    font-size: 1.8rem;
-}
-.icons-todo {
-    font-size: 1.5rem;
-    color: #d00000;
+.todo-grid-item:hover {
+    padding: 1em 2em;
 }
 .todo-grid-item input {
     margin: 0px 10px 0px 0px;
 }
-#todo-add {
-    text-align: center;
-    font-weight: 600;
-    border-radius: 0.5rem;
-    font-size: 1.2rem;
-    color: #d00000;
-    padding: 0.5rem;
-    width: 8rem;
+.edit-dots {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    font-size: 1.5rem;
+    bottom: 0.25em;
+    right: 0.25em;
 }
-.checkbox-container {
+.todo-grid-item:hover .edit-dots {
+    display: block;
+}
+.delete-todo {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    font-size: 1.5rem;
+    top: 0.25em;
+    right: 0.25em;
+}
+.todo-grid-item:hover .delete-todo {
+    display: block;
+}
+.todo-grid-item:hover {
+    box-shadow: inset 1px 1px 15px 0.5em rgba(93, 150, 229, 0.9);
+    opacity: 0.8;
+}
+.checkbox-item {
+    grid-area: checkbox;
     position: relative;
 }
-input[type="checkbox"] {
-    appearance: none;
-    background-color: whitesmoke;
-    border-radius: 0.2rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    cursor: pointer;
+.title-item {
+    grid-area: title;
 }
-.checkbox-container label::before {
-    content: "";
-    visibility: visible;
-    background: url(../assests/check_FILL0_wght400_GRAD0_opsz48.svg);
-    background-position: center;
-    background-size: contain;
-    height: 1.5rem;
-    width: 1.5rem;
+.priority-item {
+    grid-area: priority;
+    text-align: right;
+}
+.description-item {
+    grid-area: description;
+}
+.date-item {
+    grid-area: date;
+    font-weight: bold;
+    text-align: right;
+    color: #fbc382;
+}
+.icons-todo {
+    position: relative;
+    top: 0.25em;
+    font-size: 1.5rem;
+    color: #fbc382;
+}
+.low_p {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: rgb(106, 255, 19);
+}
+.middle_p {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: rgb(255, 214, 65);
+}
+.high_p {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: rgb(255, 21, 21);
+}
+/* Customize the label (the container) */
+.checkbox-container {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0rem;
+    width: 0rem;
+}
+/* Create a custom checkbox */
+.custom-check {
     position: absolute;
     top: 0rem;
     left: 0rem;
-}
-.create-todo-container {
-    display: none;
-    position: absolute;
-    z-index: 1;
-    top: 25%;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    width: 400px;
-    height: 300px;
-    border-radius: 0.5rem;
-    padding: 4rem 2rem;
-    background-color: #3b28cc;
-}
-.create-todo-container form {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-form button{
-    float: left;
-    width: 3rem;
-    cursor: pointer;
-    background-color: #28231d;
-}
-.input-field {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1rem;
-    margin: 1rem 0rem;
-}
-.input-field input {
-    padding: 5px;
-    color: #28231d;
-    flex: 1 auto;
-    height: 1.5rem;
-}
-.input-field input[type="submit"] {
-    padding: 5px;
+    border-radius: 0.25rem;
     height: 2rem;
-    cursor: pointer;
+    width: 2rem;
+    background-color: whitesmoke;
 }
-select {
-    color: #28231d;
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .custom-check {
+    background-color: #0d95e4;
+}
+/* Create the checkmark/indicator (hidden when not checked) */
+.custom-check:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .custom-check:after {
+    display: block;
+}
+/* Style the checkmark/indicator */
+.checkbox-container .custom-check:after {
+    left: 9px;
+    top: 2.5px;
+    width: 0.8rem;
+    height: 1.3rem;
+    border: solid whitesmoke;
+    border-width: 0 4px 4px 0;
+    transform: rotate(45deg);
 }

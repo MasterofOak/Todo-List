@@ -3,135 +3,107 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
-        />
-        <link rel="stylesheet" href="../src/style.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
         <title>To Do List</title>
     </head>
     <body>
-        <div class="create-todo-container">
-            <form id="create-todo" action="">
-                <button id="todo-close">Close</button>
+        <div class="form-container hidden">
+            <form id="create-todo-form" data-state="create">
+                <span id="todo-close" class="material-symbols-rounded"> close </span>
                 <div class="input-field">
                     <label for="todo-title">Title:</label
-                    ><input type="text" id="todo-title" />
+                    ><input type="text" id="todo-title" placeholder="Feed a cat" autocomplete="off" required />
                 </div>
                 <div class="input-field">
-                    <label for="todo-date">Due Date:</label
-                    ><input type="date" id="todo-date" />
+                    <label for="todo-title">Description:</label
+                    ><input type="text" id="todo-description" placeholder="Buy additional food" autocomplete="off" />
                 </div>
                 <div class="input-field">
-                    <label for="todo-type">ToDo Type:</label
-                    ><select id="todo-type">
-                        <option value="Today">Today</option>
-                        <option value="Repetetive">Repetetive</option>
-                        <option value="Favorites">Favorites</option>
+                    <label for="todo-date">Due Date:</label><input type="datetime-local" id="todo-date" required />
+                </div>
+                <div class="input-field">
+                    <label for="priority">Choose a to-do priority:</label>
+                    <input type="radio" name="priority" id="low" value="low" required />
+                    <label for="low">Low</label>
+                    <input type="radio" name="priority" id="middle" value="middle" />
+                    <label for="middle">Middle</label>
+                    <input type="radio" name="priority" id="high" value="high" />
+                    <label for="high">High</label>
+                </div>
+                <div class="input-field">
+                    <label for="todo-type">To-do type:</label>
+                    <select id="todo-type">
+                        <option value="none">None</option>
+                        <option value="projects">+ Add Project</option>
+                        <option value="repetitive">Repetitive</option>
+                    </select>
+                </div>
+                <div id="project-input" class="input-field hidden">
+                    <label for="projects">Enter project's name:</label>
+                    <input type="text" placeholder="Work" id="projects" />
+                </div>
+                <div id="repeat-selection" class="input-field hidden">
+                    <label for="repeat">Choose frequency:</label>
+                    <select id="repeat">
+                        <option value="day">Every day</option>
+                        <option value="week">Every week</option>
+                        <option value="month">Every month</option>
                     </select>
                 </div>
                 <div class="input-field">
-                    <input type="submit" value="Create" />
+                    <input type="submit" id="submit-btn" value="Create" />
                 </div>
             </form>
         </div>
         <nav>
             <div class="nav-flex-item">
-                <span class="material-symbols-rounded icons-nav">menu</span>
-                <a href="">Random ToDo of the day</a>
+                <span id="aside" class="material-symbols-rounded icons-nav">menu</span>
+                <span id="random">Random ToDo of the day</span>
             </div>
             <div class="nav-flex-item"><h2>Listy</h2></div>
             <div class="nav-flex-item">
-                <span class="material-symbols-rounded icons-nav"
-                    >notifications</span
-                >
+                <span id="notification-icon" class="material-symbols-rounded icons-nav">notifications </span>
+                <div id="notification-bar">
+                    <div id="counter" class="hidden"></div>
+                    <div id="notification-container" class="hidden"></div>
+                </div>
                 <button id="todo-add">Add Task</button>
             </div>
         </nav>
-        <div class="wrapper">
+        <div id="wrapper">
             <aside>
-                <div class="aside-flex-item">
-                    <span class="material-symbols-rounded icons-sidebar"
-                        >inbox</span
-                    >Inbox
+                <div id="main-page" class="aside-flex-item">
+                    <span class="material-symbols-rounded icons-sidebar"> home </span>All
                 </div>
-                <div class="aside-flex-item">
-                    <span class="material-symbols-rounded icons-sidebar"
-                        >today</span
-                    >Today
+                <div id="today-todos" class="aside-flex-item">
+                    <span class="material-symbols-rounded icons-sidebar">today</span>Today
                 </div>
-                <div class="aside-flex-item">
-                    <span class="material-symbols-rounded icons-sidebar"
-                        >recycling</span
-                    >Repetitive
+                <div id="repetitive-todos" class="aside-flex-item">
+                    <span class="material-symbols-rounded icons-sidebar">repeat</span>Repetitive
                 </div>
-                <div class="aside-flex-item">
-                    <span class="material-symbols-rounded icons-sidebar"
-                        >bookmark_manager</span
-                    >Projects
+                <div id="projects-todos" class="aside-flex-item">
+                    <div id="project-trigger">
+                        <span class="material-symbols-rounded icons-sidebar">bookmark_manager</span>Projects<span
+                            id="drop-down"
+                            class="material-symbols-rounded"
+                        >
+                            expand_more
+                        </span>
+                    </div>
+                    <ul id="projects-list" class="hidden"></ul>
                 </div>
             </aside>
             <main>
-                <h1>Today</h1>
+                <h1 id="header">All To-Do's</h1>
                 <div id="search-container">
                     <form>
-                        <input
-                            type="text"
-                            placeholder="Search.."
-                            name="search"
-                        />
-                        <span class="material-symbols-rounded">search</span>
+                        <input type="text" placeholder="Search..." name="search" id="search-bar" />
+                        <span class="material-symbols-rounded icons-sidebar drop-down">search</span>
                     </form>
                 </div>
-                <div class="todo-grid-container">
-                    <div class="todo-grid-item">
-                        <div class="checkbox-container">
-                            <input type="checkbox" name="" id="checkbox" />
-                            <label for="checkbox"></label>
-                        </div>
-                        <p>Take out a trash</p>
-                        <p>Due to Date:</p>
-                        <span class="material-symbols-rounded icons-todo"
-                            >recycling</span
-                        >
-                    </div>
-                    <div class="todo-grid-item">
-                        <div class="checkbox-container">
-                            <input type="checkbox" name="" id="checkbox" />
-                            <label for="checkbox"></label>
-                        </div>
-                        <p>Take out a trash</p>
-                        <p>Due to Date:</p>
-                        <span class="material-symbols-rounded icons-todo"
-                            >recycling</span
-                        >
-                    </div>
-                    <div class="todo-grid-item">
-                        <div class="checkbox-container">
-                            <input type="checkbox" name="" id="checkbox" />
-                            <label for="checkbox"></label>
-                        </div>
-                        <p>Take out a trash</p>
-                        <p>Due to Date:</p>
-                        <span class="material-symbols-rounded icons-todo"
-                            >recycling</span
-                        >
-                    </div>
-                    <div class="todo-grid-item">
-                        <div class="checkbox-container">
-                            <input type="checkbox" name="" id="checkbox" />
-                            <label for="checkbox"></label>
-                        </div>
-                        <p>Take out a trash</p>
-                        <p>Due to Date:</p>
-                        <span class="material-symbols-rounded icons-todo"
-                            >recycling</span
-                        >
-                    </div>
-                </div>
+                <div class="todo-grid-container"></div>
             </main>
         </div>
-
-        <script src="../src/index.js"></script>
+        <script src="build.js"></script>
     </body>
 </html>
